@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prajwal Gundmi • Embedded Enthusiast</title>
+  <meta name="description" content="Portfolio of Prajwal Gundmi – Embedded/IoT/VLSI projects, skills, and contact.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <div class="brand">Prajwal Gundmi</div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-label="Intro">
+      <div>
+        <span class="tag">Embedded • IoT • VLSI</span>
+        <h1 class="title">Hi, I'm Prajwal — <span class="nowrap">Embedded Enthusiast</span></h1>
+        <p class="subtitle">Engineering / Embedded / Tech</p>
+        <div class="cta-row">
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn secondary" href="#projects">View projects</a>
+        </div>
+      </div>
+      <div>
+        <div class="card hero-card">
+          <h3>Based in JP Nagar, Bengaluru</h3>
+          <p>I build reliable embedded systems and neat firmware that connect sensors, silicon, and the cloud.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-head"><h2>Summary</h2></div>
+      <div class="about">
+        <div>
+          <p>
+            Embedded engineer with a hands‑on focus on microcontrollers, low‑level drivers, and board‑bring‑up. Comfortable across the stack—from schematics and sensors to RTOS tasks and IoT backends. I enjoy designing tight, readable C/C++ for constrained devices, instrumenting with logic analyzers/oscilloscopes, and validating with unit and hardware‑in‑loop tests. Exploring VLSI fundamentals to better reason about timing, power, and interfaces at the silicon boundary. Seeking roles where I can ship robust firmware, optimize for reliability and power, and learn from production‑grade systems.
+          </p>
+        </div>
+        <div>
+          <p>
+            Strengths: methodical debugging, protocol literacy (I²C/SPI/UART/CAN), and clear documentation. I value clean abstractions, deterministic behavior, and build pipelines that keep teams fast and safe.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><h2>Skills</h2></div>
+      <div class="skills" aria-label="Skills list">
+        <span class="chip">C / Embedded C</span>
+        <span class="chip">C++ (STL Basics)</span>
+        <span class="chip">ARM Cortex‑M (STM32)</span>
+        <span class="chip">AVR / PIC</span>
+        <span class="chip">FreeRTOS & Bare‑Metal</span>
+        <span class="chip">I²C / SPI / UART / CAN</span>
+        <span class="chip">GPIO / ADC / PWM / Timers</span>
+        <span class="chip">Interrupts & DMA</span>
+        <span class="chip">IoT: MQTT / HTTP</span>
+        <span class="chip">Wireless: BLE / Wi‑Fi (ESP32)</span>
+        <span class="chip">Linux & Shell</span>
+        <span class="chip">Git & CMake</span>
+        <span class="chip">KiCad / Basic PCB</span>
+        <span class="chip">JTAG/SWD, Logic Analyzer</span>
+        <span class="chip">Python for tooling</span>
+        <span class="chip">Basics: Verilog/VLSI</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-head"><h2>Projects</h2></div>
+
+      <article class="card" aria-labelledby="p1-title">
+        <h3 id="p1-title">IoT‑Based Hybrid Power Generation & Monitoring</h3>
+        <div class="meta">Graduation Project • Wind + Solar</div>
+        <p>
+          Designed a small‑scale hybrid energy setup combining a PV panel and micro‑wind turbine, instrumented with sensors for voltage, current, and RPM. A microcontroller handled MPPT‑style control heuristics, safety cut‑offs, and data acquisition; telemetry was pushed to a cloud dashboard for live monitoring and basic analytics.
+        </p>
+        <ul class="list">
+          <li>MCU: STM32/ESP32 class; drivers for ADC, PWM, and interrupts to track power and control switching.</li>
+          <li>Interfaces: I²C sensors (current/voltage), hall/optical RPM capture via timers, relay control outputs.</li>
+          <li>Comms: MQTT over Wi‑Fi with retained messages; offline buffering in flash for intermittent links.</li>
+          <li>Safety: over‑voltage/current thresholds and emergency dump load logic.</li>
+          <li>Dashboard: live graphs showing solar vs wind contribution.</li>
+        </ul>
+      </article>
+
+      <article class="card" aria-labelledby="p2-title">
+        <h3 id="p2-title">AI‑Based Face Recognition (Iris/Eye Region Dataset)</h3>
+        <div class="meta">Computer Vision • Deep Learning</div>
+        <p>
+          Built a compact recognition pipeline targeting the peri‑ocular region (iris/eye) for identity verification. The system performs grayscale normalization, eye region detection, and feature extraction with a lightweight CNN, followed by cosine‑similarity matching. Augmentation (blur, illumination shifts) improves robustness.
+        </p>
+        <ul class="list">
+          <li>Pre‑processing: histogram equalization, eye/iris crop, alignment.</li>
+          <li>Model: shallow CNN with depthwise separable layers for on‑device inference.</li>
+          <li>Training: Python + PyTorch with early stopping and LR scheduling.</li>
+          <li>Deployment: ONNX export; real‑time inference on CPU‑only edge device.</li>
+          <li>Evaluation: verification thresholds with ROC analysis.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="contact">
+      <div class="section-head"><h2>Contact</h2></div>
+      <div class="contact">
+        <a href="tel:+918431549803">📞 +91 84315 49803</a>
+        <a href="mailto:prajwalgundmi@gmail.com">✉️ prajwalgundmi@gmail.com</a>
+        <a href="https://maps.google.com/?q=JP+Nagar+5th+Phase,+JP+Nagar,+Bengaluru" target="_blank" rel="noopener">📍 JP Nagar 5th Phase, JP Nagar, Bengaluru</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Prajwal Gundmi. Built with clean HTML, CSS & JS.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
