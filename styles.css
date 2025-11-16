@@ -120,8 +120,9 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 55%),
-              linear-gradient(to bottom right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 55%),
+    linear-gradient(to bottom right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
   z-index: -1;
 }
 
@@ -221,8 +222,9 @@ body {
 
 /* CARDS / GENERAL */
 .card {
-  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 55%),
-              linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.98));
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 55%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.98));
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   padding: 1.4rem 1.5rem;
@@ -285,8 +287,9 @@ section {
 
 /* PROJECTS */
 #projects {
-  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.7), transparent 65%),
-              linear-gradient(to bottom, #020617, #020617);
+  background:
+    radial-gradient(circle at top, rgba(15, 23, 42, 0.7), transparent 65%),
+    linear-gradient(to bottom, #020617, #020617);
 }
 
 .project-grid {
@@ -296,35 +299,28 @@ section {
 }
 
 .project-card {
-  background: rgba(15, 23, 42, 0.85);
-  border-radius: calc(var(--radius-lg) + 4px);
-  border: 1px solid rgba(30, 64, 175, 0.6);
-  overflow: hidden;
-  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.9);
-  display: flex;
-  flex-direction: column;
-}
-
-.project-card {
   position: relative;
   width: 100%;
   height: auto;
-  aspect-ratio: 793 / 903;
+  aspect-ratio: 793 / 903;   /* keep your image ratio */
   overflow: hidden;
   border-radius: 16px;
+  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.9);
 }
 
 .project-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.4s ease;
 }
 
+/* FULL IMAGE OVERLAY */
 .project-card .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.65);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -336,6 +332,18 @@ section {
   transition: opacity 0.3s ease;
 }
 
+.project-card .overlay h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.project-card .overlay p {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 500px;
+}
+
+/* Hover effects */
 .project-card:hover img {
   transform: scale(1.05);
 }
@@ -344,6 +352,7 @@ section {
   opacity: 1;
 }
 
+/* Extra text styles used inside overlay lists (if any) */
 .project-card p {
   font-size: 0.9rem;
   color: var(--muted);
@@ -417,9 +426,5 @@ section {
 
   .title {
     font-size: 1.7rem;
-  }
-
-  .project-card img {
-    height: 160px;
   }
 }
