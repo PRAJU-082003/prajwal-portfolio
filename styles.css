@@ -305,32 +305,42 @@ section {
   flex-direction: column;
 }
 
+.project-card {
+  position: relative;
+  width: 793px;
+  height: 903px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
 .project-card img {
   width: 100%;
-  height: 500px;
+  height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.4s ease;
 }
 
-.project-card article {
-  border-radius: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 1.4rem 1.5rem 1.2rem;
+.project-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.project-card h3 {
-  margin: 0 0 0.3rem;
-  font-size: 1rem;
+.project-card:hover img {
+  transform: scale(1.05);
 }
 
-.meta {
-  font-size: 0.8rem;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.6rem;
+.project-card:hover .overlay {
+  opacity: 1;
 }
 
 .project-card p {
