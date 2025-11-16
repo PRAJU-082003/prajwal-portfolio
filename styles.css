@@ -375,22 +375,6 @@ section {
 }
 
 /* PROJECT MOMENT SECTION */
-.project-moment .overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.65);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-  opacity: 0;                 /* hidden by default */
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
 #project-moment {
   background:
     radial-gradient(circle at top, rgba(15, 23, 42, 0.7), transparent 65%),
@@ -399,35 +383,42 @@ section {
 
 .project-moment-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 
+/* Each moment card container */
 .moment-card {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
   box-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
   background: #020617;
+  transition: transform 0.3s ease;
 }
 
-.moment-card img {
+/* Auto-size and responsive images/GIFs/videos */
+.moment-card img,
+.moment-card video {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
-  display: block;
   transition: transform 0.4s ease;
 }
 
-.moment-card:hover img {
+/* Hover zoom effect */
+.moment-card:hover img,
+.moment-card:hover video {
   transform: scale(1.08);
 }
 
+/* Caption styling */
 .moment-card figcaption {
   padding: 0.6rem 0.8rem 0.8rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--muted);
+  text-align: center;
 }
 
 /* CONTACT */
