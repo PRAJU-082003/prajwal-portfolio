@@ -383,31 +383,31 @@ section {
 
 .project-moment-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
 }
 
-/* Each moment card container */
 .moment-card {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
   box-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
   background: #020617;
-  transition: transform 0.3s ease;
+  aspect-ratio: 1 / 1; /* ensures square shape for all */
 }
 
-/* Auto-size and responsive images/GIFs/videos */
+/* Supports both image and GIF auto sizing */
 .moment-card img,
 .moment-card video {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover; /* fills square box neatly */
   display: block;
-  object-fit: cover;
   transition: transform 0.4s ease;
+  border: none;
 }
 
-/* Hover zoom effect */
+/* Subtle zoom on hover */
 .moment-card:hover img,
 .moment-card:hover video {
   transform: scale(1.08);
@@ -416,7 +416,7 @@ section {
 /* Caption styling */
 .moment-card figcaption {
   padding: 0.6rem 0.8rem 0.8rem;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--muted);
   text-align: center;
 }
