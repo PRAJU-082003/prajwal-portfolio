@@ -1,20 +1,201 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Prajwal Gundmi • Embedded Enthusiast</title>
   <meta name="description" content="Portfolio of Prajwal Gundmi – Embedded/IoT/VLSI projects, skills, and contact.">
-  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root { 
+      --bg: #020617;
+      --bg-alt: #020617;
+      --hero-overlay: rgba(2, 6, 23, 0.75);
+      --card-bg: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: rgba(148, 163, 184, 0.4);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.8);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #1d283a 0, #020617 50%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* HEADER */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(15,23,42,0.96), rgba(15,23,42,0.7), transparent);
+      border-bottom: 1px solid rgba(148,163,184,0.25);
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.5rem; }
+    .brand { font-weight: 600; font-size: 1.05rem; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { color: var(--muted); text-decoration: none; position: relative; font-size: 0.9rem; }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), #a855f7);
+      transition: width 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      background-image: url("images/bg.jpg");
+      background-size: cover;
+      background-position: center;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.15), transparent 55%),
+        linear-gradient(to bottom right, rgba(15,23,42,0.95), rgba(15,23,42,0.98));
+      z-index: -1;
+    }
+    .hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 3rem; padding: 4.5rem 1.5rem 4rem; }
+    .profile-pic { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(148,163,184,0.6); box-shadow: 0 18px 45px rgba(15,23,42,0.9); margin-bottom: 1.2rem; }
+    .tag { display: inline-flex; gap: 0.4rem; font-size: 0.8rem; padding: 0.3rem 0.9rem; border-radius: var(--radius-pill); background: rgba(15,23,42,0.95); color: var(--accent); border: 1px solid rgba(56,189,248,0.4); }
+    .title { font-size: clamp(1.9rem,3vw,2.4rem); margin: 1rem 0 0.35rem; }
+    .subtitle { color: var(--muted); margin: 0; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.6rem; }
+    .btn { padding: 0.6rem 1.3rem; border-radius: var(--radius-pill); background: linear-gradient(135deg, var(--accent), #a855f7); border: none; color: #0b1120; font-weight: 500; cursor: pointer; text-decoration: none; }
+    .btn.secondary { background: transparent; color: var(--text); border: 1px solid rgba(148,163,184,0.7); }
+    .btn.secondary:hover { background: rgba(15,23,42,0.85); border-color: var(--accent); }
+
+    /* ABOUT */
+    section { padding: 3.5rem 0; }
+    .section-head h2 { font-size: 1.3rem; margin-bottom: 1.7rem; color: var(--muted); text-transform: uppercase; }
+    .about { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; }
+    .about p { color: #e2e8f0; font-size: 0.95rem; }
+
+    /* SKILLS */
+    .skills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .chip { padding: 0.35rem 0.9rem; border-radius: var(--radius-pill); border: 1px solid rgba(148,163,184,0.4); background: radial-gradient(circle at top left, var(--accent-soft), transparent 60%); color: var(--muted); font-size: 0.8rem; }
+
+    /* PROJECTS */
+    #projects {
+      background: radial-gradient(circle at top, rgba(15,23,42,0.7), transparent 65%), linear-gradient(to bottom, #020617, #020617);
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 18px 60px rgba(15,23,42,0.9);
+    }
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .project-card .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      opacity: 0; /* hidden by default */
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .project-card:hover .overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .project-card:hover img { transform: scale(1.05); }
+    .overlay h3 { font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .overlay p { font-size: 1rem; color: #fff; max-width: 500px; }
+    .list { margin-top: 0.8rem; padding-left: 1rem; font-size: 0.85rem; color: #cbd5f5; list-style: disc; }
+
+    /* PROJECT MOMENT (Gallery) */
+    #moments {
+      background: linear-gradient(to bottom, #020617, #0f172a);
+    }
+    .moments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .moment {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(15,23,42,0.8);
+    }
+    .moment img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .moment:hover img { transform: scale(1.08); }
+
+    /* CONTACT */
+    .contact p { margin: 0.2rem 0; font-size: 0.95rem; }
+    .contact a { color: var(--accent); text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+
+    .site-footer {
+      border-top: 1px solid rgba(148,163,184,0.25);
+      padding: 1.2rem 0 1.6rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: #020617;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero-inner { flex-direction: column; align-items: flex-start; }
+      .about { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="wrap nav">
       <div class="brand">Prajwal Gundmi</div>
-      <nav class="nav-links" aria-label="Primary">
+      <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#moments">Project Moments</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -22,14 +203,12 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero" aria-label="Intro">
+    <section class="hero">
       <div class="wrap hero-inner">
         <div class="hero-left">
-          <img src="images/profile.jpg" alt="Prajwal Gundmi" class="profile-pic">
+          <img src="images/profile.jpg" alt="Prajwal Gundmi" class="profile-pic" />
           <span class="tag">Embedded • IoT • VLSI</span>
-          <h1 class="title">
-            Hi, I'm Prajwal — <span class="nowrap">Embedded Enthusiast</span>
-          </h1>
+          <h1 class="title">Hi, I'm Prajwal — <span class="nowrap">Embedded Enthusiast</span></h1>
           <p class="subtitle">Engineering / Embedded / Tech</p>
           <div class="cta-row">
             <a class="btn" href="#contact">Get in touch</a>
@@ -40,10 +219,7 @@
         <div class="hero-right">
           <div class="card hero-card">
             <h3>Based in JP Nagar, Bengaluru</h3>
-            <p>
-              I build reliable embedded systems and neat firmware that connect sensors,
-              silicon, and the cloud.
-            </p>
+            <p>I build reliable embedded systems and neat firmware that connect sensors, silicon, and the cloud.</p>
           </div>
         </div>
       </div>
@@ -52,30 +228,10 @@
     <!-- ABOUT -->
     <section id="about">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Summary</h2>
-        </div>
+        <div class="section-head"><h2>Summary</h2></div>
         <div class="about">
-          <div>
-            <p>
-              Embedded engineer with a hands-on focus on microcontrollers, low-level
-              drivers, and board-bring-up. Comfortable across the stack—from schematics
-              and sensors to RTOS tasks and IoT backends. I enjoy designing tight,
-              readable C/C++ for constrained devices, instrumenting with logic
-              analyzers/oscilloscopes, and validating with unit and hardware-in-loop
-              tests. Exploring VLSI fundamentals to better reason about timing, power,
-              and interfaces at the silicon boundary. Seeking roles where I can ship
-              robust firmware, optimize for reliability and power, and learn from
-              production-grade systems.
-            </p>
-          </div>
-          <div>
-            <p>
-              Strengths: methodical debugging, protocol literacy (I²C/SPI/UART/CAN),
-              and clear documentation. I value clean abstractions, deterministic
-              behavior, and build pipelines that keep teams fast and safe.
-            </p>
-          </div>
+          <p>Embedded engineer with hands-on focus on microcontrollers, low-level drivers, and board-bring-up...</p>
+          <p>Strengths: methodical debugging, protocol literacy (I²C/SPI/UART/CAN), and clear documentation.</p>
         </div>
       </div>
     </section>
@@ -83,26 +239,14 @@
     <!-- SKILLS -->
     <section id="skills">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Skills</h2>
-        </div>
-        <div class="skills" aria-label="Skills list">
+        <div class="section-head"><h2>Skills</h2></div>
+        <div class="skills">
           <span class="chip">C / Embedded C</span>
-          <span class="chip">C++ (STL Basics)</span>
-          <span class="chip">ARM Cortex-M (STM32)</span>
-          <span class="chip">AVR / PIC</span>
-          <span class="chip">FreeRTOS & Bare-Metal</span>
+          <span class="chip">C++</span>
+          <span class="chip">STM32 / ESP32</span>
+          <span class="chip">FreeRTOS</span>
           <span class="chip">I²C / SPI / UART / CAN</span>
-          <span class="chip">GPIO / ADC / PWM / Timers</span>
-          <span class="chip">Interrupts & DMA</span>
-          <span class="chip">IoT: MQTT / HTTP</span>
-          <span class="chip">Wireless: BLE / Wi-Fi (ESP32)</span>
-          <span class="chip">Linux & Shell</span>
-          <span class="chip">Git & CMake</span>
-          <span class="chip">KiCad / Basic PCB</span>
-          <span class="chip">JTAG/SWD, Logic Analyzer</span>
-          <span class="chip">Python for tooling</span>
-          <span class="chip">Basics: Verilog/VLSI</span>
+          <span class="chip">KiCad / PCB</span>
         </div>
       </div>
     </section>
@@ -110,54 +254,47 @@
     <!-- PROJECTS -->
     <section id="projects">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Projects</h2>
-        </div>
+        <div class="section-head"><h2>Projects</h2></div>
         <div class="project-grid">
-          <!-- Project 1 -->
           <div class="project-card">
             <img src="images/project1.jpg" alt="IoT Hybrid Power Project">
-            <article class="overlay" aria-labelledby="p1-title">
-              <h3 id="p1-title">IoT-Based Hybrid Power Generation & Monitoring</h3>
-              <div class="meta">Graduation Project • Wind + Solar</div>
-              <p>
-                Designed a small-scale hybrid energy setup combining a PV panel and
-                micro-wind turbine, instrumented with sensors for voltage, current,
-                and RPM. A microcontroller handled MPPT-style control heuristics,
-                safety cut-offs, and data acquisition; telemetry was pushed to a
-                cloud dashboard for live monitoring and basic analytics.
-              </p>
+            <article class="overlay">
+              <h3>IoT-Based Hybrid Power Generation & Monitoring</h3>
+              <p>Designed a small-scale hybrid energy setup combining PV panel and micro-wind turbine...</p>
               <ul class="list">
-                <li>MCU: STM32/ESP32 class; drivers for ADC, PWM, and interrupts.</li>
-                <li>Interfaces: I²C sensors, hall/optical RPM capture via timers.</li>
-                <li>Comms: MQTT over Wi-Fi with offline buffering in flash.</li>
-                <li>Safety: over-voltage/current thresholds and dump load logic.</li>
-                <li>Dashboard: live graphs for solar vs wind contribution.</li>
+                <li>MCU: STM32/ESP32</li>
+                <li>Comms: MQTT over Wi-Fi</li>
+                <li>Dashboard: live graphs</li>
               </ul>
             </article>
           </div>
 
-          <!-- Project 2 -->
           <div class="project-card">
             <img src="images/project2.jpg" alt="AI Face Recognition Project">
-            <article class="overlay" aria-labelledby="p2-title">
-              <h3 id="p2-title">AI-Based Face Recognition (Iris/Eye Region Dataset)</h3>
-              <div class="meta">Computer Vision • Deep Learning</div>
-              <p>
-                Built a compact recognition pipeline targeting the peri-ocular
-                region (iris/eye) for identity verification. The system performs
-                grayscale normalization, eye region detection, and feature extraction
-                with a lightweight CNN, followed by cosine-similarity matching.
-              </p>
+            <article class="overlay">
+              <h3>AI-Based Face Recognition (Iris/Eye Region Dataset)</h3>
+              <p>Built a compact recognition pipeline targeting peri-ocular region for identity verification...</p>
               <ul class="list">
-                <li>Pre-processing: histogram equalization, eye/iris crop.</li>
-                <li>Model: shallow CNN with depthwise separable layers.</li>
-                <li>Training: Python + PyTorch, early stopping, LR scheduling.</li>
-                <li>Deployment: ONNX export; real-time CPU-only inference.</li>
-                <li>Evaluation: verification thresholds with ROC analysis.</li>
+                <li>Model: lightweight CNN</li>
+                <li>Framework: PyTorch</li>
+                <li>Deployment: ONNX runtime</li>
               </ul>
             </article>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT MOMENTS -->
+    <section id="moments">
+      <div class="wrap">
+        <div class="section-head"><h2>Project Moments</h2></div>
+        <div class="moments-grid">
+          <div class="moment"><img src="images/moment1.jpg" alt="Team building hardware"></div>
+          <div class="moment"><img src="images/moment2.jpg" alt="Testing on bench"></div>
+          <div class="moment"><img src="images/moment3.jpg" alt="Prototype showcase"></div>
+          <div class="moment"><img src="images/moment4.jpg" alt="Lab work close-up"></div>
+          <div class="moment"><img src="images/moment5.jpg" alt="Circuit debug session"></div>
         </div>
       </div>
     </section>
@@ -165,24 +302,22 @@
     <!-- CONTACT -->
     <section id="contact">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Contact</h2>
-        </div>
+        <div class="section-head"><h2>Contact</h2></div>
         <div class="contact">
           <p>📞 +91 84315 49803</p>
           <p>✉️ <a href="mailto:prajwalgundmi@gmail.com">prajwalgundmi@gmail.com</a></p>
-          <p>📍 JP Nagar 5th Phase, JP Nagar, Bengaluru</p>
+          <p>📍 JP Nagar 5th Phase, Bengaluru</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
-      © <span id="year"></span> Prajwal Gundmi. All rights reserved.
-    </div>
+    © <span id="year"></span> Prajwal Gundmi. All rights reserved.
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
