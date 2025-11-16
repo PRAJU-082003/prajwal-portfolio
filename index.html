@@ -1,21 +1,20 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prajwal Gundmi • Embedded Enthusiast</title>
   <meta name="description" content="Portfolio of Prajwal Gundmi – Embedded/IoT/VLSI projects, skills, and contact.">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
   <header class="site-header">
     <div class="wrap nav">
       <div class="brand">Prajwal Gundmi</div>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#moments">Project Moments</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -23,12 +22,14 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" aria-label="Intro">
       <div class="wrap hero-inner">
         <div class="hero-left">
-          <img src="images/profile.jpg" alt="Prajwal Gundmi" class="profile-pic" />
+          <img src="images/profile.jpg" alt="Prajwal Gundmi" class="profile-pic">
           <span class="tag">Embedded • IoT • VLSI</span>
-          <h1 class="title">Hi, I'm Prajwal — <span class="nowrap">Embedded Enthusiast</span></h1>
+          <h1 class="title">
+            Hi, I'm Prajwal — <span class="nowrap">Embedded Enthusiast</span>
+          </h1>
           <p class="subtitle">Engineering / Embedded / Tech</p>
           <div class="cta-row">
             <a class="btn" href="#contact">Get in touch</a>
@@ -39,7 +40,10 @@
         <div class="hero-right">
           <div class="card hero-card">
             <h3>Based in JP Nagar, Bengaluru</h3>
-            <p>I build reliable embedded systems and neat firmware that connect sensors, silicon, and the cloud.</p>
+            <p>
+              I build reliable embedded systems and neat firmware that connect sensors,
+              silicon, and the cloud.
+            </p>
           </div>
         </div>
       </div>
@@ -48,10 +52,30 @@
     <!-- ABOUT -->
     <section id="about">
       <div class="wrap">
-        <div class="section-head"><h2>Summary</h2></div>
+        <div class="section-head">
+          <h2>Summary</h2>
+        </div>
         <div class="about">
-          <p>Embedded engineer with hands-on focus on microcontrollers, low-level drivers, and board-bring-up...</p>
-          <p>Strengths: methodical debugging, protocol literacy (I²C/SPI/UART/CAN), and clear documentation.</p>
+          <div>
+            <p>
+              Embedded engineer with a hands-on focus on microcontrollers, low-level
+              drivers, and board-bring-up. Comfortable across the stack—from schematics
+              and sensors to RTOS tasks and IoT backends. I enjoy designing tight,
+              readable C/C++ for constrained devices, instrumenting with logic
+              analyzers/oscilloscopes, and validating with unit and hardware-in-loop
+              tests. Exploring VLSI fundamentals to better reason about timing, power,
+              and interfaces at the silicon boundary. Seeking roles where I can ship
+              robust firmware, optimize for reliability and power, and learn from
+              production-grade systems.
+            </p>
+          </div>
+          <div>
+            <p>
+              Strengths: methodical debugging, protocol literacy (I²C/SPI/UART/CAN),
+              and clear documentation. I value clean abstractions, deterministic
+              behavior, and build pipelines that keep teams fast and safe.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -59,14 +83,26 @@
     <!-- SKILLS -->
     <section id="skills">
       <div class="wrap">
-        <div class="section-head"><h2>Skills</h2></div>
-        <div class="skills">
+        <div class="section-head">
+          <h2>Skills</h2>
+        </div>
+        <div class="skills" aria-label="Skills list">
           <span class="chip">C / Embedded C</span>
-          <span class="chip">C++</span>
-          <span class="chip">STM32 / ESP32</span>
-          <span class="chip">FreeRTOS</span>
+          <span class="chip">C++ (STL Basics)</span>
+          <span class="chip">ARM Cortex-M (STM32)</span>
+          <span class="chip">AVR / PIC</span>
+          <span class="chip">FreeRTOS & Bare-Metal</span>
           <span class="chip">I²C / SPI / UART / CAN</span>
-          <span class="chip">KiCad / PCB</span>
+          <span class="chip">GPIO / ADC / PWM / Timers</span>
+          <span class="chip">Interrupts & DMA</span>
+          <span class="chip">IoT: MQTT / HTTP</span>
+          <span class="chip">Wireless: BLE / Wi-Fi (ESP32)</span>
+          <span class="chip">Linux & Shell</span>
+          <span class="chip">Git & CMake</span>
+          <span class="chip">KiCad / Basic PCB</span>
+          <span class="chip">JTAG/SWD, Logic Analyzer</span>
+          <span class="chip">Python for tooling</span>
+          <span class="chip">Basics: Verilog/VLSI</span>
         </div>
       </div>
     </section>
@@ -74,47 +110,54 @@
     <!-- PROJECTS -->
     <section id="projects">
       <div class="wrap">
-        <div class="section-head"><h2>Projects</h2></div>
+        <div class="section-head">
+          <h2>Projects</h2>
+        </div>
         <div class="project-grid">
+          <!-- Project 1 -->
           <div class="project-card">
             <img src="images/project1.jpg" alt="IoT Hybrid Power Project">
-            <article class="overlay">
-              <h3>IoT-Based Hybrid Power Generation & Monitoring</h3>
-              <p>Designed a small-scale hybrid energy setup combining PV panel and micro-wind turbine...</p>
+            <article class="overlay" aria-labelledby="p1-title">
+              <h3 id="p1-title">IoT-Based Hybrid Power Generation & Monitoring</h3>
+              <div class="meta">Graduation Project • Wind + Solar</div>
+              <p>
+                Designed a small-scale hybrid energy setup combining a PV panel and
+                micro-wind turbine, instrumented with sensors for voltage, current,
+                and RPM. A microcontroller handled MPPT-style control heuristics,
+                safety cut-offs, and data acquisition; telemetry was pushed to a
+                cloud dashboard for live monitoring and basic analytics.
+              </p>
               <ul class="list">
-                <li>MCU: STM32/ESP32</li>
-                <li>Comms: MQTT over Wi-Fi</li>
-                <li>Dashboard: live graphs</li>
+                <li>MCU: STM32/ESP32 class; drivers for ADC, PWM, and interrupts.</li>
+                <li>Interfaces: I²C sensors, hall/optical RPM capture via timers.</li>
+                <li>Comms: MQTT over Wi-Fi with offline buffering in flash.</li>
+                <li>Safety: over-voltage/current thresholds and dump load logic.</li>
+                <li>Dashboard: live graphs for solar vs wind contribution.</li>
               </ul>
             </article>
           </div>
 
+          <!-- Project 2 -->
           <div class="project-card">
             <img src="images/project2.jpg" alt="AI Face Recognition Project">
-            <article class="overlay">
-              <h3>AI-Based Face Recognition (Iris/Eye Region Dataset)</h3>
-              <p>Built a compact recognition pipeline targeting peri-ocular region for identity verification...</p>
+            <article class="overlay" aria-labelledby="p2-title">
+              <h3 id="p2-title">AI-Based Face Recognition (Iris/Eye Region Dataset)</h3>
+              <div class="meta">Computer Vision • Deep Learning</div>
+              <p>
+                Built a compact recognition pipeline targeting the peri-ocular
+                region (iris/eye) for identity verification. The system performs
+                grayscale normalization, eye region detection, and feature extraction
+                with a lightweight CNN, followed by cosine-similarity matching.
+              </p>
               <ul class="list">
-                <li>Model: lightweight CNN</li>
-                <li>Framework: PyTorch</li>
-                <li>Deployment: ONNX runtime</li>
+                <li>Pre-processing: histogram equalization, eye/iris crop.</li>
+                <li>Model: shallow CNN with depthwise separable layers.</li>
+                <li>Training: Python + PyTorch, early stopping, LR scheduling.</li>
+                <li>Deployment: ONNX export; real-time CPU-only inference.</li>
+                <li>Evaluation: verification thresholds with ROC analysis.</li>
               </ul>
             </article>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECT MOMENTS -->
-    <section id="moments">
-      <div class="wrap">
-        <div class="section-head"><h2>Project Moments</h2></div>
-        <div class="moments-grid">
-          <div class="moment"><img src="images/moment1.jpg" alt="Team building hardware"></div>
-          <div class="moment"><img src="images/moment2.jpg" alt="Testing on bench"></div>
-          <div class="moment"><img src="images/moment3.jpg" alt="Prototype showcase"></div>
-          <div class="moment"><img src="images/moment4.jpg" alt="Lab work close-up"></div>
-          <div class="moment"><img src="images/moment5.jpg" alt="Circuit debug session"></div>
         </div>
       </div>
     </section>
@@ -122,22 +165,24 @@
     <!-- CONTACT -->
     <section id="contact">
       <div class="wrap">
-        <div class="section-head"><h2>Contact</h2></div>
+        <div class="section-head">
+          <h2>Contact</h2>
+        </div>
         <div class="contact">
           <p>📞 +91 84315 49803</p>
           <p>✉️ <a href="mailto:prajwalgundmi@gmail.com">prajwalgundmi@gmail.com</a></p>
-          <p>📍 JP Nagar 5th Phase, Bengaluru</p>
+          <p>📍 JP Nagar 5th Phase, JP Nagar, Bengaluru</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    © <span id="year"></span> Prajwal Gundmi. All rights reserved.
+    <div class="wrap">
+      © <span id="year"></span> Prajwal Gundmi. All rights reserved.
+    </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
