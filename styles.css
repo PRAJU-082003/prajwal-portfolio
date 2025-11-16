@@ -307,8 +307,9 @@ section {
 
 .project-card {
   position: relative;
-  width: 793px;
-  height: 903px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 793 / 903;
   overflow: hidden;
   border-radius: 16px;
 }
