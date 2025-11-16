@@ -1,18 +1,21 @@
-// Minimal enhancement JS
-(function(){
-  const y = document.getElementById('year');
-  if (y) y.textContent = new Date().getFullYear();
+// Set current year in footer
+document.addEventListener("DOMContentLoaded", () => {
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
   // Smooth scroll for internal links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const id = a.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      if (el) {
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        history.replaceState(null, '', '#' + id);
+  const links = document.querySelectorAll('a[href^="#"]');
+  links.forEach(link => {
+    link.addEventListener("click", event => {
+      const targetId = link.getAttribute("href").substring(1);
+      const target = document.getElementById(targetId);
+
+      if (target) {
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   });
-})();
+});
