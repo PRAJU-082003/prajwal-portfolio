@@ -316,10 +316,11 @@ section {
   transition: transform 0.4s ease;
 }
 
-/* FULL IMAGE OVERLAY */
+/* FULL IMAGE OVERLAY (ALWAYS VISIBLE) */
 .project-card .overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;                       /* ensure it's above the image */
   background: rgba(0, 0, 0, 0.65);
   color: #fff;
   display: flex;
@@ -328,8 +329,7 @@ section {
   align-items: center;
   text-align: center;
   padding: 2rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  opacity: 1;                       /* visible by default */
 }
 
 .project-card .overlay h3 {
@@ -341,15 +341,12 @@ section {
   font-size: 1rem;
   line-height: 1.5;
   max-width: 500px;
+  color: #fff;                      /* force white text */
 }
 
-/* Hover effects */
+/* Hover effects (only zoom image) */
 .project-card:hover img {
   transform: scale(1.05);
-}
-
-.project-card:hover .overlay {
-  opacity: 1;
 }
 
 /* Extra text styles used inside overlay lists (if any) */
